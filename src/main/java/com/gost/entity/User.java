@@ -26,7 +26,7 @@ public class User {
     private String name;
 
     @Column(name = "password")
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="invalid password. password must contains from 3 to 15 symbols")
+    @Pattern(regexp = "^([a-zA-Z0-9]{1,})([A-Z]{1,})([0-9]{1,})$", message="invalid password")
     @NotNull(message = "Field is empty")
     private String password;
 
