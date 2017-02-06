@@ -4,7 +4,6 @@ import com.gost.entity.User;
 import com.gost.service.UserService;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class UserDAOImpl implements UserDAO {
     private Session session = null;
 
     @Override
-    @Transactional
     public List<User> getAll() {
         session = hibernateSessionFactory.getSession();
+        session.beginTransaction();
         List<User> listUser = (List<User>) session
                 .createCriteria(User.class)
                 .list();
+        session.getTransaction().commit();
         hibernateSessionFactory.getSession().close();
         return listUser;
     }
