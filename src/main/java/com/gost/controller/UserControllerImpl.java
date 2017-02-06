@@ -46,8 +46,7 @@ public class UserControllerImpl implements UserController {
 
     public HttpStatus checkStatus(User user) {
         HttpStatus httpStatus = null;
-        if (user == null) httpStatus = HttpStatus.BAD_REQUEST;
-        if (user != null) httpStatus = HttpStatus.OK;
+        httpStatus = (user == null) ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
         return httpStatus;
     }
 
