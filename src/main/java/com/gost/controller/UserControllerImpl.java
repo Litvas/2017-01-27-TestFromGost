@@ -2,14 +2,11 @@ package com.gost.controller;
 
 import com.gost.entity.User;
 import com.gost.service.UserService;
-import com.gost.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.*;
 import java.util.List;
 
 @RestController
@@ -45,9 +42,8 @@ public class UserControllerImpl implements UserController {
     }
 
     public HttpStatus checkStatus(User user) {
-        HttpStatus httpStatus = null;
-        httpStatus = (user == null) ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
-        return httpStatus;
+        HttpStatus httpStatus;
+        return httpStatus = (user == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
     }
 
     @Override
