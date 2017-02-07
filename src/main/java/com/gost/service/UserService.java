@@ -2,7 +2,6 @@ package com.gost.service;
 
 import com.gost.entity.User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import java.util.List;
 
