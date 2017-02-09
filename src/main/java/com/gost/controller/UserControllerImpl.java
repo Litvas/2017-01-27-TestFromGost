@@ -1,9 +1,10 @@
 package com.gost.controller;
 
+import com.gost.entity.TypeResponse;
 import com.gost.entity.User;
 import com.gost.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,22 +35,18 @@ public class UserControllerImpl implements UserController {
         userService.remove(id);
     }
 
-    @Override
+
+@Override
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public HttpStatus add(@RequestBody @Valid User user) {
-        return checkStatus(userService.add(user));
-    }
-
-    public HttpStatus checkStatus(User user) {
-        HttpStatus httpStatus;
-        return httpStatus = (user == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+    public TypeResponse add(@RequestBody @Valid User user, BindingResult bindingResult) {
+        return userService.checkStatus(bindingResult);
     }
 
     @Override
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)
     @ResponseBody
-    public HttpStatus edit(@RequestBody @Valid User user) {
-        return checkStatus(userService.edit(user));
+    public TypeResponse edit(@RequestBody @Valid User user, BindingResult bindingResult) {
+        return userService.checkStatus(bindingResult);
     }
 }

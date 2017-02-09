@@ -3,6 +3,7 @@ package com.gost.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -17,16 +18,16 @@ public class User {
     private Long id;
 
     @Column(name = "login")
-    @NotNull(message = "Field is empty")
+    @NotNull(message = "Field 'login' is empty")
     private String login;
 
     @Column(name = "name")
-    @NotNull(message = "Field is empty")
+    @NotNull(message = "Field 'name' is empty")
     private String name;
 
     @Column(name = "password")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="invalid password")
-    @NotNull(message = "Field is empty")
+    @NotNull(message = "Field 'password' is empty")
     private String password;
 
     @ManyToMany(targetEntity = Role.class)

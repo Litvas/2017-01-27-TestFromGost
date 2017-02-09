@@ -1,7 +1,8 @@
 package com.gost.controller;
 
+import com.gost.entity.TypeResponse;
 import com.gost.entity.User;
-import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ public interface UserController {
 
     void remove(Long id);
 
-    HttpStatus add(User user);
+    TypeResponse add(User user, BindingResult bindingResult);
 
-    HttpStatus edit(User user);
+    TypeResponse edit(User user, BindingResult bindingResult);
 
 }
